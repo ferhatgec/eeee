@@ -1,0 +1,696 @@
+[[ library ]]
+
+// MIT License
+//
+// Copyright (c) 2021 Ferhat Geçdoğan All Rights Reserved.
+// Distributed under the terms of the MIT License.
+//
+// eeee - access e numbers from Gretea
+//
+// github.com/ferhatgec/eeee
+// github.com/ferhatgec/gretea
+//
+// All additives and numbers taken from FSA
+//   food.gov.uk/business-guidance/approved-additives-and-e-numbers
+//
+
+// external dependencies
+import tea.green.fmt
+import tea.green.type
+import tea.green.log
+import tea.green.color
+import tea.black.sstream
+
+import tea.green.char
+import tea.green.string
+import tea.black.vector
+
+module e {
+    fn e#get(data: string) = string {
+        var codes: []string = {
+            "E100" \
+            "E101" \
+            "E102" \
+            "E104" \
+            "E110" \
+            "E120" \
+            "E122" \
+            "E123" \
+            "E124" \
+            "E127" \
+            "E129" \
+            "E131" \
+            "E132" \
+            "E133" \
+            "E140" \
+            "E141" \
+            "E142" \
+            "E150A" \
+            "E150B" \
+            "E150C" \
+            "E150D" \
+            "E151" \
+            "E153" \
+            "E155" \
+            "E160A" \
+            "E160B" \
+            "E160C" \
+            "E160D" \
+            "E160E" \
+            "E161B" \
+            "E161G" \
+            "E162" \
+            "E163" \
+            "E170" \
+            "E171" \
+            "E172" \
+            "E173" \
+            "E174" \
+            "E175" \
+            "E180" \
+            "E200" \
+            "E202" \
+            "E210" \
+            "E211" \
+            "E212" \
+            "E213" \
+            "E214" \
+            "E215" \
+            "E218" \
+            "E219" \
+            "E220" \
+            "E221" \
+            "E222" \
+            "E223" \
+            "E224" \
+            "E226" \
+            "E227" \
+            "E228" \
+            "E234" \
+            "E235" \
+            "E239" \
+            "E242" \
+            "E243" \
+            "E249" \
+            "E250" \
+            "E251" \
+            "E252" \
+            "E280" \
+            "E281" \
+            "E282" \
+            "E283" \
+            "E284" \
+            "E285" \
+            "E1105" \
+            "E300" \
+            "E301" \
+            "E302" \
+            "E304" \
+            "E306" \
+            "E307" \
+            "E308" \
+            "E309" \
+            "E310" \
+            "E315" \
+            "E316" \
+            "E319" \
+            "E320" \
+            "E321" \
+            "E392" \
+            "E586" \
+            "E420" \
+            "E421" \
+            "E950" \
+            "E951" \
+            "E952" \
+            "E953" \
+            "E954" \
+            "E955" \
+            "E957" \
+            "E959" \
+            "E960" \
+            "E961" \
+            "E962" \
+            "E964" \
+            "E965" \
+            "E966" \
+            "E967" \
+            "E968" \
+            "E969" \
+            "E322" \
+            "E400" \
+            "E401" \
+            "E402" \
+            "E403" \
+            "E404" \
+            "E405" \
+            "E406" \
+            "E407" \
+            "E407A" \
+            "E410" \
+            "E412" \
+            "E413" \
+            "E414" \
+            "E415" \
+            "E416" \
+            "E417" \
+            "E418" \
+            "E425" \
+            "E426" \
+            "E427" \
+            "E432" \
+            "E433" \
+            "E434" \
+            "E435" \
+            "E436" \
+            "E440" \
+            "E442" \
+            "E444" \
+            "E445" \
+            "E460" \
+            "E461" \
+            "E462" \
+            "E463" \
+            "E464" \
+            "E465" \
+            "E466" \
+            "E468" \
+            "E469" \
+            "E470A" \
+            "E470B" \
+            "E471" \
+            "E472A" \
+            "E472B" \
+            "E472C" \
+            "E472D" \
+            "E472E" \
+            "E472F" \
+            "E473" \
+            "E474" \
+            "E475" \
+            "E476" \
+            "E477" \
+            "E479B" \
+            "E481" \
+            "E482" \
+            "E483" \
+            "E491" \
+            "E492" \
+            "E493" \
+            "E494" \
+            "E495" \
+            "E1103" \
+            "E260" \
+            "E261" \
+            "E262" \
+            "E263" \
+            "E270" \
+            "E290" \
+            "E296" \
+            "E297" \
+            "E325" \
+            "E326" \
+            "E327" \
+            "E330" \
+            "E331" \
+            "E332" \
+            "E333" \
+            "E334" \
+            "E335" \
+            "E336" \
+            "E337" \
+            "E338" \
+            "E339" \
+            "E340" \
+            "E341" \
+            "E343" \
+            "E350" \
+            "E351" \
+            "E352" \
+            "E353" \
+            "E354" \
+            "E355" \
+            "E356" \
+            "E357" \
+            "E363" \
+            "E380" \
+            "E385" \
+            "E422" \
+            "E423" \
+            "E450" \
+            "E451" \
+            "E452" \
+            "E459" \
+            "E499" \
+            "E500" \
+            "E501" \
+            "E503" \
+            "E504" \
+            "E507" \
+            "E508" \
+            "E509" \
+            "E511" \
+            "E512" \
+            "E513" \
+            "E514" \
+            "E515" \
+            "E516" \
+            "E517" \
+            "E520" \
+            "E521" \
+            "E522" \
+            "E523" \
+            "E524" \
+            "E525" \
+            "E526" \
+            "E527" \
+            "E528" \
+            "E529" \
+            "E530" \
+            "E535" \
+            "E536" \
+            "E538" \
+            "E541" \
+            "E551" \
+            "E552" \
+            "E553A" \
+            "E553B" \
+            "E554" \
+            "E555" \
+            "E570" \
+            "E574" \
+            "E575" \
+            "E576" \
+            "E577" \
+            "E578" \
+            "E579" \
+            "E585" \
+            "E620" \
+            "E621" \
+            "E622" \
+            "E623" \
+            "E624" \
+            "E625" \
+            "E626" \
+            "E627" \
+            "E628" \
+            "E629" \
+            "E630" \
+            "E631" \
+            "E632" \
+            "E633" \
+            "E634" \
+            "E635" \
+            "E640" \
+            "E641" \
+            "E650" \
+            "E900" \
+            "E901" \
+            "E902" \
+            "E903" \
+            "E904" \
+            "E905" \
+            "E907" \
+            "E914" \
+            "E920" \
+            "E927B" \
+            "E938" \
+            "E939" \
+            "E941" \
+            "E942" \
+            "E943A" \
+            "E943B" \
+            "E944" \
+            "E948" \
+            "E949" \
+            "E999" \
+            "E1200" \
+            "E1201" \
+            "E1202" \
+            "E1203" \
+            "E1204" \
+            "E1205" \
+            "E1206" \
+            "E1207" \
+            "E1208" \
+            "E1209" \
+            "E1404" \
+            "E1410" \
+            "E1412" \
+            "E1413" \
+            "E1414" \
+            "E1420" \
+            "E1422" \
+            "E1440" \
+            "E1442" \
+            "E1450" \
+            "E1451" \
+            "E1452" \
+            "E1505" \
+            "E1517" \
+            "E1518" \
+            "E1519" \
+            "E1520" \
+            "E1521" \
+        }
+        
+        var desc: []string = {
+            "Curcumin" \
+            "(i) Riboflavin | (ii) Riboflavin-5\' - phosphate" \
+            "Tartrazine" \
+            "Quinoline yellow" \
+            "Sunset Yellow FCF; Orange Yellow S" \
+            "Cochineal; Carminic acid; Carmines" \
+            "Azorubine; Carmoisine" \
+            "Amaranth" \
+            "Ponceau 4R; Cochineal Red A" \
+            "Erythrosine" \
+            "Allura Red AC" \
+            "Patent Blue V" \
+            "lndigotine; Indigo Carmine" \
+            "Brilliant Blue FCF" \
+            "Chlorophylls and chlorophyllins" \
+            "Copper complexes of chlorophyll and chlorophyllins" \
+            "Green S" \
+            "Plain caramel" \
+            "Caustic sulphite caramel" \
+            "Ammonia caramel" \
+            "Sulphite ammonia caramel" \
+            "Brilliant Black BN; Black PN" \
+            "Vegetable carbon" \
+            "Brown HT" \
+            "Carotenes" \
+            "(i)\'Annatto, bixin | (ii) Annatto, norbixin" \
+            "Paprika extract; Capsanthian; Capsorubin" \
+            "Lycopene" \
+            "Beta-apo-8\' - carotenal(C30)" \
+            "Lutein" \
+            "Canthaxanthin" \
+            "Beetroot Red; Betanin" \
+            "Anthocyanins" \
+            "Calcium carbonate" \
+            "Titanium dioxide" \
+            "Iron oxides and hydroxides" \
+            "Aluminium" \
+            "Silver" \
+            "Gold" \
+            "Litholrubine BK" \
+            "Sorbic acid" \
+            "Potassium sorbate" \
+            "Benzoic acid" \
+            "Sodium benzoate" \
+            "Potassium benzoate" \
+            "Calcium benzoate" \
+            "Ethyl p-hydroxybenzoate" \
+            "Sodium ethyl p-hydroxybenzoate" \
+            "Methyl p-hydroxybenzoate" \
+            "Sodium methyl p-hydroxybenzoate" \
+            "Sulphur dioxide" \
+            "Sodium sulphite" \
+            "Sodium hydrogen sulphite" \
+            "Sodium metabisulphite" \
+            "Potassium metabisulphite" \
+            "Calcium sulphite" \
+            "Calcium hydrogen sulphite" \
+            "Potassium hydrogen sulphite" \
+            "Nisin" \
+            "Natamycin" \
+            "Hexamethylene tetramine" \
+            "Dimethyl dicarbonate" \
+            "Ethyl lauroyl arginate" \
+            "Potassium nitrite" \
+            "Sodium nitrite" \
+            "Sodium nitrate" \
+            "Potassium nitrate" \
+            "Propionic acid" \
+            "Sodium propionate" \
+            "Calcium propionate" \
+            "Potassium propionate" \
+            "Boric acid" \
+            "Sodium tetraborate; borax" \
+            "Lysozyme" \
+            "Ascorbic acid" \
+            "Sodium ascorbate" \
+            "Calcium ascorbate" \
+            "Fatty acid esters of ascorbic acid" \
+            "Tocopherols" \
+            "Alpha-tocopherol" \
+            "Gamma-tocopherol" \
+            "Delta-tocopherol" \
+            "Propyl gallate" \
+            "Erythorbic acid" \
+            "Sodium erythorbate" \
+            "Tertiary-butyl hydroquinone (TBHQ)" \
+            "Butylated hydroxyanisole (BHA)" \
+            "Butylated hydroxytoluene (BHT)" \
+            "Extracts of rosemary" \
+            "4-Hexylresorcinol" \
+            "(i) Sorbitol | (ii) Sorbitol syrup" \
+            "Mannitol" \
+            "Acesulfame K" \
+            "Aspartame" \
+            "Cyclamic acid and its Na and Ca salts" \
+            "lsomalt" \
+            "Saccharin and its Na, K and Ca salts" \
+            "Sucralose" \
+            "Thaumatin" \
+            "Neohesperidine DC" \
+            "Steviol glycoside" \
+            "Neotame" \
+            "Salt of aspartame-acesulfame" \
+            "Polyglycitol syrup" \
+            "(i) Maltitol | (ii) Maltitol syrup" \
+            "Lactitol" \
+            "Xylitol" \
+            "Erythritol" \
+            "Advantame" \
+            "Lecithins" \
+            "Alginic acid" \
+            "Sodium alginate" \
+            "Potassium alginate" \
+            "Ammonium alginate" \
+            "Calcium alginate" \
+            "Propane-1,2-diol alginate" \
+            "Agar" \
+            "Carrageenan" \
+            "Processed eucheuma seaweed" \
+            "Locust bean gum; carob gum" \
+            "Guar gum" \
+            "Tragacanth" \
+            "Acacia gum; gum arabic" \
+            "Xanthan gum" \
+            "Karaya gum" \
+            "Tara gum" \
+            "Gellan gum" \
+            "Konjac" \
+            "Soybean hemicellulose" \
+            "Cassia gum" \
+            "Polyoxyethylene sorbitan monolaurate; Polysorbate 20" \
+            "Polyoxyethylene sorbitan mono-oleate; Polysorbate 80" \
+            "Polyoxyethylene sorbitan monopalmitate; Polysorbate 40" \
+            "Polyoxyethylene sorbitan monostearate; Polysorbate 60" \
+            "Polyoxyethylene sorbitan tristearate; Polysorbate 65" \
+            "Pectins" \
+            "Ammonium phosphatides" \
+            "Sucrose acetate isobutyrate" \
+            "Glycerol esters of wood rosins" \
+            "Cellulose" \
+            "Methyl cellulose" \
+            "Ethyl cellulose" \
+            "Hydroxypropyl cellulose" \
+            "Hydroxypropyl methyl cellulose" \
+            "Ethyl methyl cellulose" \
+            "Carboxy methyl cellulose" \
+            "Crosslinked sodium carboxy methyl cellulose" \
+            "Enzymatically hydrolysed carboxy methyl cellulose" \
+            "Sodium, potassium and calcium salts of fatty acids" \
+            "Magnesium salts of fatty acids" \
+            "Mono- and diglycerides of fatty acids" \
+            "Acetic acid esters of mono- and diglycerides of fatty acids" \
+            "Lactic acid esters of mono- and diglycerides of fatty acids" \
+            "Citric acid esters of mono- and diglycerides of fatty acids" \
+            "Tartaric acid esters of mono- and diglycerides of fatty acids" \
+            "Mono- and diacetyltartaric acid esters of mono- and diglycerides of fatty acids" \
+            "Mixed acetic and tartaric acid esters of mono- and diglycerides of fatty acids" \
+            "Sucrose esters of fatty acids" \
+            "Sucroglycerides" \
+            "Polyglycerol esters of fatty acids" \
+            "Polyglycerol polyricinoleate" \
+            "Propane-1,2-diol esters of fatty acids" \
+            "Thermally oxidised soya bean oil interacted with mono­ and diglycerides of fatty acids" \
+            "Sodium stearoyl-2-lactylate" \
+            "Calcium stearoyl-2-lactylate" \
+            "Stearyl tartrate" \
+            "Sorbitan monostearate" \
+            "Sorbitan tristearate" \
+            "Sorbitan monolaurate" \
+            "Sorbitan monooleate" \
+            "Sorbitan monopalmitate" \
+            "Invertase" \
+            "Acetic acid" \
+            "Potassium acetate" \
+            "Sodium acetate" \
+            "Calcium acetate" \
+            "Lactic acid" \
+            "Carbon dioxide" \
+            "Malic acid" \
+            "Fumaric acid" \
+            "Sodium lactate" \
+            "Potassium lactate" \
+            "Calcium lactate" \
+            "Citric acid" \
+            "Sodium citrates" \
+            "Potassium citrates" \
+            "Calcium citrates" \
+            "Tartaric acid (L-(+))" \
+            "Sodium tartrates" \
+            "Potassium tartrates" \
+            "Sodium potassium tartrate" \
+            "Phosphoric acid" \
+            "Sodium phosphates" \
+            "Potassium phosphates" \
+            "Calcium phosphates" \
+            "Magnesium phosphates" \
+            "Sodium malates" \
+            "Potassium malate" \
+            "Calcium malates" \
+            "Metatartaric acid" \
+            "Calcium tartrate" \
+            "Adipic acid" \
+            "Sodium adipate" \
+            "Potassium adipate" \
+            "Succinic acid" \
+            "Triammonium citrate" \
+            "Calcium disodium ethylene diamine tetra-acetate; calcium disodium EDTA" \
+            "Glycerol" \
+            "Octenyl succinic acid modified gum Arabic" \
+            "Diphosphates" \
+            "Triphosphates" \
+            "Polyphosphates" \
+            "Beta-cyclodextrin" \
+            "Stigmasterol-rich plant sterols" \
+            "Sodium carbonates" \
+            "Potassium carbonates" \
+            "Ammonium carbonates" \
+            "Magnesium carbonates" \
+            "Hydrochloric acid" \
+            "Potassium chloride" \
+            "Calcium chloride" \
+            "Magnesium chloride" \
+            "Stannous chloride" \
+            "Sulphuric acid" \
+            "Sodium sulphates" \
+            "Potassium sulphates" \
+            "Calcium sulphate" \
+            "Ammonium sulphate" \
+            "Aluminium sulphate" \
+            "Aluminium sodium sulphate" \
+            "Aluminium potassium sulphate" \
+            "Aluminium ammonium sulphate" \
+            "Sodium hydroxide" \
+            "Potassium hydroxide" \
+            "Calcium hydroxide" \
+            "Ammonium hydroxide" \
+            "Magnesium hydroxide" \
+            "Calcium oxide" \
+            "Magnesium oxide" \
+            "Sodium ferrocyanide" \
+            "Potassium ferrocyanide" \
+            "Calcium ferrocyanide" \
+            "Sodium aluminium phosphate" \
+            "Silicon dioxide" \
+            "Calcium silicate" \
+            "(i) Magnesium silicate | (ii) Magnesium trisilicate" \
+            "Talc" \
+            "Sodium aluminium silicate" \
+            "Potassium aluminium silicate" \
+            "Fatty acids" \
+            "Gluconic acid" \
+            "Glucono delta-lactone" \
+            "Sodium gluconate" \
+            "Potassium gluconate" \
+            "Calcium gluconate" \
+            "Ferrous gluconate" \
+            "Ferrous lactate" \
+            "Glutamic acid" \
+            "Monosodium glutamate" \
+            "Monopotassium glutamate" \
+            "Calcium diglutamate" \
+            "Monoammonium glutamate" \
+            "Magnesium diglutamate" \
+            "Guanylic acid" \
+            "Disodium guanylate" \
+            "Dipotassium guanylate" \
+            "Calcium guanylate" \
+            "lnosinic acid" \
+            "Disodium inosinate" \
+            "Dipotassium inosinate" \
+            "Calcium inosinate" \
+            "Calcium 5\' - ribonucleotides" \
+            "Disodium 5\' - ribonucleotides" \
+            "Glycine and its sodium salt" \
+            "L-leucine" \
+            "Zinc acetate" \
+            "Dimethylpolysiloxane" \
+            "Beeswax, white and yellow" \
+            "Candelilla wax" \
+            "Carnauba wax" \
+            "Shellac" \
+            "Microcrystalline wax" \
+            "Hydrogenated Poly-1-Decene" \
+            "Oxidised Polyethylene wax" \
+            "L-Cysteine" \
+            "Carbamide" \
+            "Argon" \
+            "Helium" \
+            "Nitrogen" \
+            "Nitrous oxide" \
+            "Butane" \
+            "Iso-butane" \
+            "Propane" \
+            "Oxygen" \
+            "Hydrogen" \
+            "Quillaia extract" \
+            "Polydextrose" \
+            "Polyvinylpyrrolidone" \
+            "Polyvinylpolypyrrolidone" \
+            "Polyvinyl alcohol" \
+            "Pullulan" \
+            "Basic methacrylate copolymer" \
+            "Neutral methacrylate copolymer" \
+            "Anionic methacrylate copolymer" \
+            "Polyvinylpyrrolidone-vinylacetate copolymer" \
+            "Polyvinyl alcohol-polyethylene glycol-graft- co-polymer" \
+            "Oxidised starch" \
+            "Monostarch phosphate" \
+            "Distarch phosphate" \
+            "Phosphated distarch phosphate" \
+            "Acetylated distarch phosphate" \
+            "Acetylated starch" \
+            "Acetylated distarch adipate" \
+            "Hydroxyl propyl starch" \
+            "Hydroxy propyl distarch phosphate" \
+            "Starch sodium octenyl succinate" \
+            "Acetylated oxidised starch" \
+            "Starch aluminium Octenyl succinate" \
+            "Triethyl citrate" \
+            "Glyceryl diacetate (diacetin)" \
+            "Glyceryl triacetate; triacetin" \
+            "Benzyl alcohol" \
+            "Propan-1,2-diol; propylene glycol" \
+            "Polyethylene glycol"
+        }
+
+        var mut i: uint32 = 0
+
+        for &arg in codes {
+            if arg == data {
+                . desc[i];
+            }
+
+            i += 1
+        }
+
+        . "?"
+    }
+} // e

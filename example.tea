@@ -1,0 +1,20 @@
+import eeee
+import tea.green.string
+import tea.green.fmt
+import tea.black.vector
+
+fn main() = int {
+    [[ include_args ]]
+
+    if argc < 2 {
+        . 1
+    }
+
+    for &arg in arguments {
+        if arguments[0] == arg { continue }
+
+    	fmt#println("\x1b[0;93m", arg, ":", '\w' , "\x1b[0m", e#get(str#upper(arg)))
+    }
+
+    . 0
+}
